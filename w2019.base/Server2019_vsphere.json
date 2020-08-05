@@ -1,0 +1,76 @@
+{
+
+  
+    "sensitive-variables": ["vsphere_password", "winadmin_password"],
+    
+    "builders": [
+      {
+        "type": "vsphere-iso",
+  
+        "vcenter_server": "{{user `vsphere-server`}}",
+        "username": "{{user `vsphere-user`}}",
+        "password": "{{user `vsphere-password`}}",
+        "insecure_connection": "true",
+  
+        "datacenter": "{{user `vsphere-datacenter`}}",
+        "cluster": "{{user `vsphere-cluster`}}",
+        "network": "{{user `vsphere-network`}}",
+        "datastore": "{{user `vsphere-datastore`}}",
+        "folder": "{{user `vsphere-folder`}}",
+  
+        "communicator": "winrm",
+        "winrm_use_ssl":"true",
+        "winrm_insecure": "true",
+        "winrm_username": "{{user `winrm_username`}}",
+        "winrm_password": "{{user `winadmin-password`}}",
+  
+        "convert_to_template": "true",
+
+        "vm_name": "{{user `vm-name`}}",
+        "guest_os_type": "windows9Server64Guest",
+  
+        "CPUs": "{{user `vm-cpu-num`}}",
+        "RAM": "{{user `vm-mem-size`}}",
+        "RAM_reserve_all": true,
+        "firmware": "bios",
+  
+        "disk_controller_type": "lsilogic-sas",
+        "disk_size": "{{user `vm-disk-size`}}",
+        "disk_thin_provisioned": true,
+  
+        "network_card": "vmxnet3",
+  
+        "iso_paths": [
+          "{{user `os_iso_path`}}",
+          "[] /vmimages/tools-isoimages/windows.iso"
+        ],
+  
+        "floppy_files": [
+            "autounattend.xml",
+            "../scripts/disable-network-discovery.cmd",
+            "../scripts/enable-rdp.cmd",
+            "../scripts/enable-winrm.ps1",
+            "../scripts/install-vm-tools.cmd",
+            "../scripts/set-temp.ps1",
+            "../scripts/microsoft-updates.bat",
+            "../scripts/win-updates.ps1",
+            "../scripts/disable-screensaver.ps1"
+        ]
+      }
+    ],
+        "provisioners": [
+           
+          {
+            "type": "windows-update",
+            "search_criteria": "IsInstalled=0",
+            "filters": [
+                "exclude:$_.Title -like '*Preview*'",
+                "include:$true"
+            ],
+            "update_limit": 25
+          }
+    ]
+  
+    
+   
+  }

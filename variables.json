@@ -1,0 +1,24 @@
+{
+
+
+    "vsphere-server": "192.168.2.3",
+        "vsphere-user": "administrator@vsphere.local",
+        "vsphere-password": "YOUR_Password",
+        
+        "vsphere-datacenter": "YOUR_Dataceneter",
+        "vsphere-cluster": "YOUR_Cluster",
+        "vsphere-network": "YOUR_Network",
+        "vsphere-datastore": "Your_Datastore",
+        "vsphere-folder": "Your_vmfolder",
+          
+          "vm-name": "Win2019-Template-Base",
+          "vm-cpu-num": "2",
+          "vm-mem-size": "4096",
+          "vm-disk-size": "40960",
+          "winadmin-password": "Your WindowsPassword",
+          "os_iso_path": "[VNX5300_Auto-Tier_LUN1] ISO/Windows Server 2019/SW_DVD9_Win_Server_STD_CORE_2019_64Bit_German_DC_STD_MLF_X21-96583.ISO",
+          "winrm_username": "Administrator",
+            
+        
+
+    }
