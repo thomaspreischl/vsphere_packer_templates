@@ -59,18 +59,31 @@
       }
 
     ],
-        "provisioners": [
-           
-          {
-            "type": "windows-update",
-            "search_criteria": "IsInstalled=0",
-            "filters": [
-                "exclude:$_.Title -like '*Preview*'",
-                "include:$true"
-            ],
-            "update_limit": 25
-          }
-    ]
+    "provisioners": [
+      {
+        "type": "windows-restart",
+        "restart_timeout": "30m"
+      },
+       
+      {
+        "type": "windows-update",
+        "search_criteria": "IsInstalled=0",
+        "filters": [
+            "exclude:$_.Title -like '*Preview*'",
+            "exclude:$_.Title -like '*Cumulative*'",
+            "exclude:$_.Title -like '*Kumulatives*'",
+            "exclude:$_.Title -like '*VMware*'",
+            "exclude:$_.Title -like '*Defender*'",
+            "include:$true"
+        ],
+        "pause_before": "30s"
+      },
+      {
+        "type": "windows-restart"
+      }
+        
+      
+]
     
    
   }
