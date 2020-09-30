@@ -17,7 +17,7 @@
           "vm-disk-size": "40960",
           "winadmin-password": "Your WindowsPassword",
           "os_iso_path": "[VNX5300_Auto-Tier_LUN1] ISO/Windows Server 2019/SW_DVD9_Win_Server_STD_CORE_2019_64Bit_German_DC_STD_MLF_X21-96583.ISO",
-          "winrm_username": "Administrator",
+          "winrm_username": "Administrator"
             
         
 
