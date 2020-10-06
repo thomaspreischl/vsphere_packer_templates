@@ -27,7 +27,7 @@
         "convert_to_template": "true",
 
         "vm_name": "{{user `vm-name`}}",
-        "guest_os_type": "windows9Server64Guest",
+        "guest_os_type": "windows9_64Guest",
   
         "CPUs": "{{user `vm-cpu-num`}}",
         "RAM": "{{user `vm-mem-size`}}",
@@ -59,24 +59,7 @@
       }
     ],
         "provisioners": [
-          {
-            "type": "windows-restart",
-            "restart_timeout": "30m"
-          },
-           
-          {
-            "type": "windows-update",
-            "search_criteria": "IsInstalled=0",
-            "filters": [
-                "exclude:$_.Title -like '*Preview*'",
-                "exclude:$_.Title -like '*Cumulative*'",
-                "exclude:$_.Title -like '*Kumulatives*'",
-                "exclude:$_.Title -like '*VMware*'",
-                "exclude:$_.Title -like '*Defender*'",
-                "include:$true"
-            ],
-            "pause_before": "30s"
-          },
+                  
           {
             "type": "windows-restart"
           }
