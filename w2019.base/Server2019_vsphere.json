@@ -47,14 +47,14 @@
   
         "floppy_files": [
             "{{template_dir}}/autounattend.xml",
-            "../scripts/disable-network-discovery.cmd",
-            "../scripts/enable-rdp.cmd",
-            "../scripts/enable-winrm.ps1",
-            "../scripts/install-vm-tools.cmd",
-            "../scripts/set-temp.ps1",
-            "../scripts/microsoft-updates.bat",
-            "../scripts/win-updates.ps1",
-            "../scripts/disable-screensaver.ps1"
+            "{{template_dir}}/scripts/disable-network-discovery.cmd",
+            "{{template_dir}}/scripts/enable-rdp.cmd",
+            "{{template_dir}}/scripts/enable-winrm.ps1",
+            "{{template_dir}}/scripts/install-vm-tools.cmd",
+            "{{template_dir}}/scripts/set-temp.ps1",
+            "{{template_dir}}/scripts/microsoft-updates.bat",
+            "{{template_dir}}/scripts/win-updates.ps1",
+            "{{template_dir}}/scripts/disable-screensaver.ps1"
         ]
       }
     ],
