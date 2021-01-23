@@ -46,7 +46,7 @@
         ],
   
         "floppy_files": [
-            "../w2019.base/autounattend.xml",
+            "{{template_dir}}/autounattend.xml",
             "../scripts/disable-network-discovery.cmd",
             "../scripts/enable-rdp.cmd",
             "../scripts/enable-winrm.ps1",
