@@ -7,9 +7,10 @@ trigger:
   branches:
    include:
      - master
-  
-
-
+  paths:
+   include:
+     -  vsphere_packer_templates/*
+ 
 schedules:
 - cron: "0 1 * * 0"
   displayName: Weekly Sunday build
@@ -21,14 +22,22 @@ schedules:
 pool:
  
   name: Default
-
-
-
+ 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+ 
+- task: CopyFiles@2
+ 
+  displayName: 'Copy Packer Files to Artifacts'
+ 
+  inputs:
+ 
+    SourceFolder: vsphere_packer_templates
+ 
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    cleanTargetFolder: true
+ 
+ 
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.ArtifactStagingDirectory)'
+    artifact: PackerConfig 
